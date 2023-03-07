@@ -12,16 +12,24 @@ function addItem() {
   const li = document.createElement("li");
   li.innerHTML = addInput.value;
   li.style.color = lastPickedColor;
-  colorChange();
-  itemList.appendChild("li");
+  changeColor();
+  itemList.appendChild(li);
 
   addInput.value = "";
+  
 }
 
 // remove item
 function removeItem() {
-  itemList.removeChild(li);
-  let li = document.querySelector("li:last-child");
+  const listItems = document.getElementsByTagName('li')
+  if( listItems.length >= 1){
+    let li = document.querySelector("li:last-child");
+    itemList.removeChild(li);
+  }
+
+  else{
+    alert("Sorry !! You haven't any item to remove")
+  }
 }
 
 // change color
@@ -31,6 +39,7 @@ function changeColor() {
   for (let i = 0; i < List.length; i++) {
     List[i].style.color = lastPickedColor;
   }
+  colorInput.value = "";
 }
 
 // uppercase
@@ -59,3 +68,4 @@ function toggleButton() {
   }
 
 };
+
